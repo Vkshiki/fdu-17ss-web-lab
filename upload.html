@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="utf-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class ="container">
+<nav class="navbar-nav mr-auto nav-fill nav-pills navbar-light navbar-expand-lg row">
+	  <a class="navbar-brand col-lg-4 col-12 text-center align-self-stre">
+	  <h1>Share Your Travels</h1>
+	  <p><i>Let us know where you've been</i></p>
+	  </a>
+      <a class="nav-item nav-link col-lg-2 col-12  text-muted align-self-center" href="upload.html">Gallery</a>
+      <a class="nav-item nav-link col-lg-2 col-12  text-muted align-self-center" href="#">Feeling Lucky</a>
+      <a class="nav-item nav-link col-lg-2 col-12  text-muted align-self-center" href="#">User</a>
+    </nav>
+
+
+
+<div class ="card card-body ">
+<form>
+<h2>Photo Details</h2>
+<div class ="form-group">
+<label for ="nameInput"><b>Title</b></label><br/>
+<input type ="text" class="form-control" id="nameInput" placeholder="Give your photo a descriptive name"/>
+</div>
+<div class ="form-group">
+<label for ="descriptionInput"><b>Description</b></label><br/>
+<textarea rows ="2" class="form-control" id="descriptionInput" placeholder="Adding a rich description will help with search results"></textarea>
+</div>
+<div class ="form-group">
+<div class="form-inline">
+  <label class="my-1 mr-2" for="ContinentSelectPref"><b>Continent</b></label>
+  <select class="custom-select my-1 mr-sm-2" id="ContinentSelectPref">
+    <option selected>Choose continent</option>
+    <option value="1"></option>
+    <option value="2"></option>
+    <option value="3"></option>
+  </select>
+</div>
+</div>
+<div class ="form-group">
+<div class="form-inline">
+  <label class="my-1 mr-2" for="CountrySelectPref"><b>Country</b></label>
+  <select class="custom-select my-1 mr-sm-2" id="CountrySelectPref">
+    <option selected>Choose country</option>
+    <option value="1"></option>
+    <option value="2"></option>
+    <option value="3"></option>
+  </select>
+</div> 
+</div> 
+<div class ="form-group">
+<label for ="cityInput"><b>City</b></label><br/>
+<input type ="text" class="form-control" id="cityInput" />
+</div>
+<div class ="form-group">
+<label ><b>Copyright?</b></label><br/>
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="Copyright" id="Copyright1" value="option1">
+  <label class="form-check-label" for="Copyright1">
+    All rights reserved
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="Copyright" id="Copyright2" value="option2" checked>
+  <label class="form-check-label" for="Copyright2">
+    Creative commons
+  </label>
+</div>
+</div>
+<div class ="form-group">
+<label><b>Creative Commons Types</b></label><br/>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" id="cct1" value="option1">
+  <label class="form-check-label" for="cct1">Attribution</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" id="cct2" value="option2">
+  <label class="form-check-label" for="cct2">Noncommercial</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" id="cct3" value="option3">
+  <label class="form-check-label" for="cct3">No derivative works</label>
+</div>
+</div>
+<div class ="form-group">
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" id="accept" value="option1">
+  <label class="form-check-label" for="accept">I accept the software license</label>
+</div>
+</div>
+<div class ="row">
+<div class="col-lg-3 col-12">
+<div class="form-group">
+<label for="rate">Rate this photo:</label>
+<input type="number" class="form-control" id="rate"  min="1" max="5"/>
+</div>
+</div>
+<div class = "col-lg-1 col-0">
+</div>
+<div class="col-lg-8 col-12">
+<div class="form-group">
+<label for="color">Color Collection: </label>
+<input type="text" class="form-control" id="color"/>
+</div>
+</div>
+</div>
+<div class ="row">
+<div class="col-lg-6 col-12">
+<div class="form-group">
+<label for="rate">Date taken:</label>
+<input type="text" class="form-control" id="date"/>
+</div>
+</div>
+<div class = "col-lg-1 col-0">
+</div>
+<div class="col-lg-5 col-12">
+<div class="form-group">
+<label for="color">Time taken: </label>
+<input type="text" class="form-control" id="time"/>
+</div>
+</div>
+</div>
+<div class = "form-group">
+<div class="btn-group" role="group">
+<button type="submit" class="btn btn-secondary">Submit</button>
+<button type="reset" class="btn btn-secondary">Clear</button>
+</div>
+</div>
+</form>
+</div>
+</div>
+</body>
+</html>

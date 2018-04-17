@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="utf-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class ="container">
+    <nav class="navbar-nav mr-auto nav-fill nav-pills navbar-light navbar-expand-lg row">
+	  <a class="navbar-brand col-lg-4 col-12 text-center align-self-stre">
+	  <h1>Share Your Travels</h1>
+	  <p><i>Let us know where you've been</i></p>
+	  </a>
+      <a class="nav-item nav-link col-lg-2 col-12  text-muted align-self-center" href="upload.html">Upload</a>
+      <a class="nav-item nav-link col-lg-2 col-12  text-muted align-self-center" href="#">Related photos</a>
+      <a class="nav-item nav-link col-lg-2 col-12  text-muted align-self-center" href="#">Reviews</a>
+    </nav>
+	
+	<div class = "row">
+
+	<div class="card card-body col-lg-9" >
+		<h3>New York-Central Park</h3>
+		<p>Conservatory Pond in Central Park</p>
+		<a href ="images/large-central-park.jpg"><img class = "w-100"src="images/large-central-park.jpg" alt="Card image cap"/></a>
+		<p>This photo of Conservatory Pond in <a href="#">Central Park</a> in <a href="#">New York City</a> was taken on October 22,2016 with a Canon EOS 30D camera.</p>
+		<div class="btn-toolbar justify-content-end" role="toolbar" aria-label="Toolbar with button groups">
+		<div class = "input-group">
+		<div class="input-group-prepend">
+			<input class="input-group-text" type ="image" src ="images/icon_download.png" alt ="submit" />
+			<input class="input-group-text" type ="image" src ="images/icon_mail.png" alt ="submit" />
+			<input class="input-group-text" type ="image" src ="images/icon_map.png" alt ="submit" />
+			<input class="input-group-text" type ="image" src ="images/icon_up.png" alt ="submit" />
+			<input class="input-group-text" type ="image" src ="images/icon_down.png" alt ="submit" />
+		</div>
+		</div>
+		</div>	
+	</div>
+	<div class ="col-lg-3">
+	<div class="card card-body" >
+	<h3>Related Photos</h3>
+	<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+	  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+	<div class="carousel-inner">
+    <div class="carousel-item active">
+      <a href ="images/related-square1.jpg"><img class="d-block w-100" src="images/related-square1.jpg" alt="First slide"></a>
+    </div>
+    <div class="carousel-item">
+      <a href ="images/related-square2.jpg"><img class="d-block w-100" src="images/related-square2.jpg" alt="Second slide"></a>
+    </div>
+    <div class="carousel-item">
+      <a href ="images/related-square3.jpg"><img class="d-block w-100" src="images/related-square3.jpg" alt="Third slide"></a>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a></div>
+	</div>
+	<div class ="card card-body">
+	<h3>Reviews</h3>
+	<div class ="card-text text-center">
+	<p>Ricardo</p>
+	<p>
+	<a class="badge badge-info badge-pill" data-toggle="collapse" href="#Ricardo" role="button" aria-expanded="false" aria-controls="Ricardo">2016-05-23</a>
+	</p>
+	<div class="collapse" id="Ricardo">
+	<div class="card card-body">
+    Easy on the HDR buddy.
+	</div>
+	</div>
+	<hr class="my-4"/>
+	<p>Susan</p>
+	<p>
+	<a class="badge badge-info badge-pill" data-toggle="collapse" href="#Susan" role="button" aria-expanded="false" aria-controls="Susan">2016-11-18</a>
+	</p>
+	<div class="collapse" id="Susan">
+	<div class="card card-body">
+	I love Central Park.
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	
+	<ul class="nav justify-content-center row text-center">
+	<li class="nav-item col-md-3">				
+	<a class="nav-link text-info" href="#">Home</a>
+	</li>
+	<li class="nav-item col-md-3">			
+	<a class="nav-link text-info" href="#">Browse</a>
+	</li>
+	<li class="nav-item col-md-3">					
+	<a class="nav-link text-info" href="#">Search</a>
+	</li>
+	</ul>
+	<p class = "text-center  text-secondary"><i>Copyright &copy 2017 Share Your Travels</i></p>
+</div>
+
+</body>
+</html>
