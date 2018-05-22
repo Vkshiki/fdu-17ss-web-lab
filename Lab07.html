@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang ="en">
+	<head>
+		<meta charset ="utf-8"/>
+		<title>Lab07</title>
+		<link href="css/Lab07.css" rel="stylesheet" />
+		<script type="text/javascript" src="js/data.js"></script>
+	</head>
+	<body>
+		<select id="select1"  onchange = "selectChange()">
+			<option value="selectOne()">SELECT ONE</option>
+			<option value="createTable()">CREATE TABLE</option>
+			<option value="addRow()">ADD ROW</option>
+			<option value="deleteRow()">DELETE ROW</option>
+			<option value="deleteTable()">DELETE TABLE</option>
+		</select>
+		
+		<div id ="BoxA"></div>
+
+		<select id="select2"  onchange = "selectChange_()">
+			<option value="">SELECT (default: last created)</option>
+		</select>
+		<br/>
+		<table id ="BoxB"></table>
+		<script src="js/Lab07.js" type="text/JavaScript"></script>
+	</body>
+</html>
