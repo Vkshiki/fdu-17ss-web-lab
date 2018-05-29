@@ -60,13 +60,7 @@ function createTableCopy(){
 	
 }
 
-// function Node(data) {
-    // this.data = data;
-    // this.parent = null;
-    // this.children = [];
-// }
 
-// var dataTree= new Tree("fatherNode");
 let tables = new Array();
 function CommitB(){
     var tableName = document.getElementById("tableName").value;
