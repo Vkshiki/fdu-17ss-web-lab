@@ -13,19 +13,13 @@ function createTable(){
     columnNumberBox.setAttribute("type", "number");
     columnNumberBox.setAttribute("id", "columnNumber");
 	columnNumberBox.setAttribute("placeholder", "Columns Numbers");
-	//var commitButton= document.createElement("button");
-    //commitButton.setAttribute("id", "commitButton1");
-    //commitButton.setAttribute("class", "commitButton");
-    //commitButton.appendChild(document.createTextNode("commit"));
 	var attrBox= document.createElement("div");
     attrBox.setAttribute("id", "attrBox");
 	var buttonBox= document.createElement("div");
     buttonBox.setAttribute("id", "buttonBox");
-	
     BoxA.appendChild(tableNameBox);
     BoxA.appendChild(columnNumberBox);
-	//BoxA.appendChild(document.createElement("br"));
-    //BoxA.appendChild(commitButton);
+
     BoxA.appendChild(document.createElement("br"));
 	BoxA.appendChild(attrBox);
 	BoxA.appendChild(buttonBox);
@@ -66,31 +60,23 @@ function createTableCopy(){
 	
 }
 
-function Node(data) {
-    this.data = data;
-    this.parent = null;
-    this.children = [];
-}
+// function Node(data) {
+    // this.data = data;
+    // this.parent = null;
+    // this.children = [];
+// }
 
-function Tree (data) {
-    this._root = new Node(data);
-}
-
-var dataTree= new Tree("fatherNode");
-
+// var dataTree= new Tree("fatherNode");
+let tables = new Array();
 function CommitB(){
-    var tableName= document.getElementById("tableName").value;
-    var newTable= new Node(tableName);
-    dataTree._root.children.push(newTable);
-    newTable.parent= dataTree;
-
-    var columnNumber= document.getElementById("columnNumber").value;
-    var attrArray= document.getElementsByClassName("attr");
-    for (let i= 0; i < columnNumber; i++) {
-        var newArray= new Node(attrArray[i].value);
-        newTable.children.push(newArray);
-        newArray.parent= newTable;
-    }
+    var tableName = document.getElementById("tableName").value;
+    var columnNumber = document.getElementById("columnNumber").value;
+    var attrArray = document.getElementsByClassName("attr");
+	let arr = new Array();
+    for(let i= 0; i < columnNumber; i++) {
+		arr.push([attrArray[i].value,new Array()]);
+	}
+	tables.push([tableName,arr]);
     s2Refresh();
 
     var select2= document.getElementById("select2");
@@ -103,14 +89,14 @@ function addRow(){
 	var BoxA= document.getElementById("BoxA");
     BoxA.innerHTML= "";
     var index= document.getElementById("select2").selectedIndex;
-    var table= dataTree._root.children[index];
-    var arrNumber= table.children.length;
+
+    var arrNumber= tables[index][1].length;
     for (let i= 0; i< arrNumber; i++) {
 
         var attrArray= document.createElement("input");
         attrArray.setAttribute("type", "text");
         attrArray.setAttribute("class", "attr");
-        attrArray.setAttribute("placeholder", table.children[i].data);
+        attrArray.setAttribute("placeholder",tables[index][1][i][0]);
 
         BoxA.appendChild(attrArray);
     }
@@ -122,14 +108,11 @@ function addRow(){
 }
 
 function aRCommit() {
-    var arrays= document.getElementsByClassName("attr");
-    var index= document.getElementById("select2").selectedIndex;
-    var table= dataTree._root.children[index];
-
+    var arrays = document.getElementsByClassName("attr");
+    var index = document.getElementById("select2").selectedIndex;
+    var table = tables[index];
     for (let i= 0; i< arrays.length; i++) {
-        var cellCont= new Node(arrays[i].value);
-        cellCont.parent= table.children[i];
-        table.children[i].children.push(cellCont);
+        table[1][i][1].push(arrays[i].value);
     }
     tbRefresh();
 }
@@ -138,15 +121,13 @@ function deleteRow(){
 	var BoxA= document.getElementById("BoxA");
     BoxA.innerHTML= "";
     var index= document.getElementById("select2").selectedIndex;
-    var table= dataTree._root.children[index];
-    var arrNumber= table.children.length;
-    for (let i= 0; i< arrNumber; i++) {
+    var table = tables[index];
 
+    for (let i= 0; i< table[1].length; i++) {
         var attrArray= document.createElement("input");
         attrArray.setAttribute("type", "text");
         attrArray.setAttribute("class", "attr");
-        attrArray.setAttribute("placeholder", table.children[i].data);
-
+        attrArray.setAttribute("placeholder", table[1][i].data);
         BoxA.appendChild(attrArray);
     }
     BoxA.appendChild(document.createElement("br"));
@@ -159,26 +140,26 @@ function deleteRow(){
 function dRCommit() {
     var arrays= document.getElementsByClassName("attr");
     var index= document.getElementById("select2").selectedIndex;
-    var table= dataTree._root.children[index];
-
-    var deleteIndex= [];
-    for (let r= 0; r< table.children[0].children.length; r++) {
+    var table= tables[index];
+    var deleteIndex= new Array();
+    for (let r= 0; r < table[1][0][1].length; r++) {
         matchIndex(0, r);
     }
+
     function matchIndex(c, r) {
         if (c=== arrays.length) {
             deleteIndex.push(r);
         }
-        else if (table.children[c].children[r].data=== arrays[c].value.trim()|| arrays[c].value.trim()==="") {
+        else if (table[1][c][1][r]=== arrays[c].value.trim()|| arrays[c].value.trim()==="") {
 			matchIndex(c+ 1, r);
         }
     }
-
+	
     if (deleteIndex.length!== 0) {
         for (let i= deleteIndex.length- 1; i>= 0; i--) {
             let r= deleteIndex[i];
-            for (let j= 0; j< table.children.length; j++) {
-                table.children[j].children.splice(r, 1);
+            for (let j= 0; j< table[1].length; j++) {
+                table[1][j][1].splice(r, 1);
             }
         }
     }
@@ -190,10 +171,11 @@ function deleteTable(){
     BoxA.innerHTML= "";
     var select2= document.getElementById("select2");
     var index= select2.selectedIndex;
-    if (index!== select2.options.length- 1) {
+    if (index!= select2.options.length- 1) {
         var columnNumber4= document.createElement("button");
         columnNumber4.appendChild(document.createTextNode("commit"));
         columnNumber4.setAttribute("onclick", "dTCommit()");
+		BoxA.innerHTML = "WARNING: You cannot undo this action!<br/>"
         BoxA.appendChild(columnNumber4);
     }
 }
@@ -201,22 +183,22 @@ function deleteTable(){
 function dTCommit() {
     var select2= document.getElementById("select2");
     var index= select2.selectedIndex;
-    dataTree._root.children.splice(index, 1);
+    tables.splice(index, 1);
     s2Refresh();
 
     var options= document.getElementById("select2").options;
     options[0].selected= true;
     tbRefresh();
-    alert("WARNING: You cannot undo this action!");
+	deleteTable();
 
 }
 
 function s2Refresh() {
     var select2= document.getElementById("select2");
     select2.innerHTML= "";
-    for (let i= 0; i< dataTree._root.children.length; i++) {
+    for (let i= 0; i< tables.length; i++) {
         var newOption= document.createElement("option");
-        newOption.appendChild(document.createTextNode(dataTree._root.children[i].data));
+        newOption.appendChild(document.createTextNode(tables[i][0]));
         select2.add(newOption);
     }
     var newOption= document.createElement("option");
@@ -230,26 +212,27 @@ function tbRefresh() {
     var tableBox= document.getElementById("BoxB");
     tableBox.innerHTML= "";
 
-    var table= dataTree._root.children[index];
+    var table= tables[index];
     var tr0= document.createElement("tr");
-
-    for (let i= 0; i< table.children.length; i++) {
+	if(table!=null){
+    for (let i= 0; i< table[1].length; i++) {
         let th= document.createElement("th");
-        th.appendChild(document.createTextNode(table.children[i].data));
+        th.appendChild(document.createTextNode(table[1][i][0]));
         tr0.appendChild(th);
     }
     tableBox.appendChild(tr0);
 
 
-    for (let j= 0; j< table.children[0].children.length; j++) {
+    for (let j= 0; j< table[1][0][1].length; j++) {
         let newRow= document.createElement("tr");
-        for (let i= 0; i< table.children.length; i++) {
+        for (let i= 0; i< table[1].length; i++) {
             let newCell= document.createElement("td");
-            newCell.appendChild(document.createTextNode(table.children[i].children[j].data));
+            newCell.appendChild(document.createTextNode(table[1][i][1][j]));
             newRow.appendChild(newCell);
         }
         tableBox.appendChild(newRow);
     }
+	}
 }
 
 function selectChange() {
